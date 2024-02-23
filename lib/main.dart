@@ -6,7 +6,7 @@ void main() {
 }
 
 class FlutterWithMySQL extends StatelessWidget {
-  const FlutterWithMySQL({Key? key}) : super(key: key);
+  const FlutterWithMySQL({super.key});
 
   @override
   Widget build(BuildContext context) {

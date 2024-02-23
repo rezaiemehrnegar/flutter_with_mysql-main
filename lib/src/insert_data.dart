@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_with_mysql/src/database/data.dart';
 import 'package:flutter_with_mysql/src/show_data.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,7 +20,10 @@ class _HomePageState extends State<HomePage> {
   void insertData() async {
     db.getConnection().then((conn) {
       String sqlQuery = 'insert into users (email, password) values (?, ?)';
-      conn.query(sqlQuery, [emailController.text, passwordController.text]);
+      conn.query(
+        sqlQuery,
+        [emailController.text, passwordController.text],
+      );
       setState(() {});
       print("Data Added");
     });

@@ -1,11 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_with_mysql/src/database/data.dart';
 import 'package:flutter_with_mysql/src/model/model.dart';
 
 class SQLData extends StatefulWidget {
   const SQLData({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<SQLData> createState() => _SQLDataState();
@@ -21,8 +23,10 @@ class _SQLDataState extends State<SQLData> {
       String sqlQuery = 'select email, password from users';
       await conn.query(sqlQuery).then((results) {
         for (var res in results) {
-          final profileModel =
-              Profiles(email: res["email"], password: res["password"]);
+          final profileModel = Profiles(
+            email: res["email"],
+            password: res["password"],
+          );
 
           profileList.add(profileModel);
         }
